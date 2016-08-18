@@ -3,6 +3,7 @@
 
 Ansible with vagrant
 =======================================
+Vagrant Ubuntu 14.04
 
 Notes:
 ------
