@@ -34,8 +34,8 @@ Note that the default values in the playbooks assume that your project structure
 		- wsgi.py
 	- manage.py
 	- requirements
-     	base.txt
-     	development.txt
+    	- base.txt
+    	- development.txt
 
 
 Run the playbook:
