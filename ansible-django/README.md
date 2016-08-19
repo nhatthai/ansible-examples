@@ -28,10 +28,10 @@ Requirements:
 Note that the default values in the playbooks assume that your project structure looks something like this:
 + myapp
 	- myapp
-		 __init__.py
-		settings.py
-		urls.py
-		wsgi.py
+		- __init__.py
+		- settings.py
+		- urls.py
+		- wsgi.py
 	- manage.py
 	- requirements
      	base.txt
