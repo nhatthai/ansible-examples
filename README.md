@@ -29,3 +29,7 @@ Errors and Resolving:
 ---------------------
 * Fatal: [22.22.22.22]: FAILED! => {"failed": true, "msg": "Timeout (12s) waiting for privilege escalation prompt: "}
 	+ Fixed: set “sudo: yes” into site.yml
+
+Reference:
+----------
+http://www.thedreaming.org/2014/11/04/vagrant-ansible/
