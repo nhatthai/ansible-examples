@@ -62,24 +62,32 @@ Notes:
 
 	- Fixed:
 	```
-		sudo touch /var/run/supervisor.sock
-		sudo chmod 777 /var/run/supervisor.sock
-		sudo service supervisor restart
+	sudo touch /var/run/supervisor.sock
+	sudo chmod 777 /var/run/supervisor.sock
+	sudo service supervisor restart
 	```
 
-+ If a django isn't running.
-	- Please stop supervisor
-		```
-		sudo supervisorctl stop myapp
-		```
-	- Start Django App
-		```
-		venv/bin/python ./manage.py runserver 0.0.0.0:8000 --settings=myapp.settings
-		```
++ Command line checking gunicorn & supervisor:
+	- Check gunicorn supervisor:
+	```
+	sudo supervisorctl status myapp
+	```
+
 	- Start supervisor:
-		```
-		sudo supervisorctl start myapp
-		```
+	```
+	sudo supervisorctl start myapp
+	```
+
+	- Stop supervisor:
+	```
+	sudo supervisorctl stop myapp
+	```
+
+	- Start Django App:
+	```
+	venv/bin/python ./manage.py runserver 0.0.0.0:8000 --settings=myapp.settings
+	```
+
 
 
 Useful Links
