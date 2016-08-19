@@ -20,9 +20,9 @@ A quick way to get started is with Vagrant and VirtualBox.
 
 Requirements:
 ============
-+ "Ansible <http://docs.ansible.com/ansible/intro_installation.html/>"
-+ "Vagrant <https://www.vagrantup.com/downloads.html/>"
-+ "VirtualBox <https://www.virtualbox.org/wiki/Downloads/>"
++ Ansible (<http://docs.ansible.com/ansible/intro_installation.html/>)
++ Vagrant (<https://www.vagrantup.com/downloads.html/>)
++ VirtualBox (<https://www.virtualbox.org/wiki/Downloads/>)
 
 
 Note that the default values in the playbooks assume that your project structure looks something like this:
