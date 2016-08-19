@@ -4,6 +4,3 @@
 
 - name: restart gunicorn
   service: name=gunicorn state=restarted
-
-- name: Restart Supervisor
-  supervisorctl: name={{ project_name }} state=restarted

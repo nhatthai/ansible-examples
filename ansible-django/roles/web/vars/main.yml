@@ -50,7 +50,10 @@ virtualenv_dir: "{{install_root}}/{{project_name}}/venv"
 # repository
 app_code_dir: "{{ install_root }}/{{project_name}}"
 
+app_log_dir: "{{ app_code_dir }}/logs/"
 app_log_file: "{{ app_code_dir }}/logs/gunicorn_supervisor.log"
+
+gunicorn_max_requests: 0
 # the dns name or names (space separated) for your server
 #server_name: django-hello.com www.django-hello.com
 

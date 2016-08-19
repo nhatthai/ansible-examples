@@ -3,7 +3,7 @@ upstream myapp_server {
   # to return a good HTTP response (in case the Unicorn master nukes a
   # single worker for timing out).
 
-  server unix:{{ install_root }}/{{ project_name }}/{{ project_name }}.sock fail_timeout=0;
+  server 0.0.0.0:8000 fail_timeout=0;
 }
 
 server {
