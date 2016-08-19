@@ -1,0 +1,18 @@
+---
+- name: Installs mysql package
+  apt: name={{ item }} state=latest
+  with_items:
+    - mysql-server-5.5
+    - mysql-client-5.5
+
+- name: Create Mysql configuration file
+  template: src=my.cnf.j2 dest=/etc/my.cnf
+  notify:
+  - restart mysql
+
+- name: Create Application Database
+  mysql_db: name={{ dbname }} state=present
+
+- name: Create Application DB User
+  mysql_user: name={{ dbuser }} password={{ upassword }} priv=*.*:ALL host='%' state=present
+

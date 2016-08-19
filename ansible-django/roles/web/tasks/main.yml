@@ -1,0 +1,19 @@
+---
+- name: check if virtualenv already exists
+  stat: path={{virtualenv_dir}}
+  register: venv_dir
+
+- name: create virtualenv with mysql-python installed in it
+  pip: name=mysql-python virtualenv={{virtualenv_dir}}
+
+- name: install python packages with virtualenv
+  pip: requirements={{ install_root }}/requirements/development.txt virtualenv={{ virtualenv_dir }}
+  when: venv_dir.stat.isdir is not defined
+
+- include: setup_django_app.yml
+
+- include: setup_gunicorn.yml
+
+- include: setup_supervisor.yml
+
+- include: setup_nginx.yml

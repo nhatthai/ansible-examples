@@ -1,0 +1,5 @@
+[program:{{ project_name }}]
+command = {{ virtualenv_dir }}/bin/gunicorn
+user = {{ deploy_user }}
+stdout_logfile = {{ app_log_file }}
+redirect_stderr = true

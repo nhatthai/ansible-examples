@@ -1,0 +1,12 @@
+description "Gunicorn application server handling {{ project_name }}"
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+respawn
+setuid {{deploy_user}}
+setgid www-data
+chdir {{ install_root }}/{{ project_name }}
+
+exec {{ virtualenv_dir }}/bin/gunicorn --workers 3 --bind 0.0.0.0:8000 \
+   --bind unix:{{ install_root }}/{{ project_name }}/{{ project_name }}.sock {{ wsgi_module }}:application  --log-level=debug --log-file=-

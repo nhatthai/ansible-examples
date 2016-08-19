@@ -1,0 +1,18 @@
+---
+
+- name: Create a {{ project_name }} virtual machine via vagrant
+  hosts: webservers
+  sudo: yes
+  sudo_user: root
+  remote_user: vagrant
+
+  vars:
+    - update_apt_cache: yes
+
+  vars_files:
+    - vars/base.yml
+
+  roles:
+    - base
+    - db
+    - web
