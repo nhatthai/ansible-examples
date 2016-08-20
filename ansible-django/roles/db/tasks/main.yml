@@ -5,14 +5,41 @@
     - mysql-server-5.5
     - mysql-client-5.5
 
-- name: Create Mysql configuration file
-  template: src=my.cnf.j2 dest=/etc/my.cnf
-  notify:
-  - restart mysql
+- name: Update MySQL root password for all root accounts
+  mysql_user:
+    name: root
+    host: "{{ item }}"
+    password: "{{ root_db_password }}"
+    state: present
+    login_password: ""
+    login_user: root
+  with_items:
+    - 127.0.0.1
+    - ::1
+    - localhost
 
-- name: Create Application Database
-  mysql_db: name={{ dbname }} state=present
+- name: Copy the templates to their respestive destination
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: root
+    group: root
+    mode: "{{ item.mode | default(644) }}"
+  with_items:
+    - { src: 'my.cnf.j2', dest: '/etc/mysql/my.cnf' }
+    - { src: 'root.cnf.j2', dest: '~/.my.cnf', mode: '600' }
+
+- name: Ensure Anonymous user(s) are not in the database
+  mysql_user:
+    name: ''
+    host: "{{ item }}"
+    state: absent
+  with_items:
+    - 127.0.0.1
+    - localhost
+
+- name: Create Database
+  mysql_db: name={{ dbname }} state=present login_password={{ root_db_password }} login_user={{ root_db_user }}
 
 - name: Create Application DB User
-  mysql_user: name={{ dbuser }} password={{ upassword }} priv=*.*:ALL host='%' state=present
-
+  mysql_user: name={{ root_db_user }} password={{ root_db_password }} priv=*.*:ALL host='%' state=present
