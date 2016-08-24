@@ -43,8 +43,8 @@ Run the playbook:
 =================
 Please make sure that you added id_rsa.pub into vagrant machine
 ```
-$cd ansible-django-stack
-ansible-django-stack$ ansible-playbook -i hosts deploy.yml
+$cd ansible-django
+ansible-django$ ansible-playbook -i hosts deploy.yml
 ```
 
 Notes:
