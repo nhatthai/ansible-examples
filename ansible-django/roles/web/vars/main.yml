@@ -4,6 +4,8 @@ project_name: myapp
 
 deploy_user: vagrant
 
+server_name: localhost
+
 # Path source code
 install_root: /home/{{deploy_user}}/sources
 
@@ -75,12 +77,3 @@ gunicorn_max_requests: 0
 db_name: exampledb
 db_user: root
 db_password: django@123
-
-server_name: localhost
-
-django_env_vars: {
-  DEBUG: True,
-  DATABASE_URL: '', # ex: postgres://deployer@127.0.0.1:5432/dbname'
-  STATIC_URL: '/static/',
-  SECRET_KEY: '',
-}

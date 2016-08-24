@@ -17,11 +17,15 @@ server {
     error_log {{app_code_dir}}/logs/nginx-error.log;
 
     location /static/ {
-        alias   {{static_root}}/;
+        alias  {{static_root}}/;
     }
 
     location /media/ {
-        alias   {{app_code_dir}}/media/;
+        alias  {{app_code_dir}}/media/;
+    }
+
+    location /favicon.ico {
+        alias {{static_root}}/favicon.ico;
     }
 
     location / {
@@ -60,5 +64,11 @@ server {
     error_page 500 502 503 504 /500.html;
     location = /500.html {
         root {{static_root}}/;
+    }
+
+    # Error pages
+    error_page  404              /404.html;
+    location = /404.html {
+        root   {{static_root}};
     }
 }
