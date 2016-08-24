@@ -1,4 +1,4 @@
-#Ansible-django-stack
+#Ansible Django
 
 Ansible Playbook designed for environments running a Django app. It can install and configure these applications that are commonly used in production Django deployments:
 
