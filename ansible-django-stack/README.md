@@ -42,19 +42,19 @@ Please make sure that you added id_rsa.pub into your machine as well as the repo
 + Run on vagrant:
 	```
 	$cd ansible-django-stack
-	ansible-django-stack$ ansible-playbook -i vagrant deploy.yml
+	$ansible-django-stack$ ansible-playbook -i vagrant deploy.yml
 	```
 
 + Run on staging:
 	```
 	$cd ansible-django-stack
-	ansible-django-stack$ ansible-playbook -i staging deploy.yml
+	$ansible-django-stack$ ansible-playbook -i staging deploy.yml
 	```
 
 + Run on production:
 	```
 	$cd ansible-django-stack
-	ansible-django-stack$ ansible-playbook -i production deploy_production.yml
+	$ansible-django-stack$ ansible-playbook -i production deploy_production.yml
 	```
 
 Notes
@@ -66,7 +66,6 @@ Notes
 Useful Links
 ============
 + [Ansible Django Stack](https://github.com/jcalazan/ansible-django-stack/)
-+ [Ansible - Getting Started](http://docs.ansible.com/intro_getting_started.html)
 + [Ansible - Best Practices](http://docs.ansible.com/playbooks_best_practices.html)
 + [Setting up Django with Nginx, Gunicorn, virtualenv, supervisor and PostgreSQL](http://michal.karzynski.pl/blog/2013/06/09/django-nginx-gunicorn-virtualenv-supervisor/)
 + https://www.stavros.io/posts/example-provisioning-and-deployment-ansible/
