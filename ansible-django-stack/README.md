@@ -18,17 +18,17 @@ Requirements:
 + [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 
 
-#Vagrant
+Vagrant
 ========
 +Ubuntu: My SQL Server & Web App
 
 
-#Staging
+Staging
 ========
 + EC2: My SQL Server & Web App
 
 
-#Production
+Production
 ===========
 + RDS MySQL: My SQL Server
 + EC2: Web App
@@ -39,19 +39,19 @@ Run the playbook:
 Please make sure that you added id_rsa.pub into your machine as well as the repository(github or bitbucket)
 
 
-+ Run on vagrant
++ Run on vagrant:
 	```
 	$cd ansible-django-stack
 	ansible-django-stack$ ansible-playbook -i vagrant deploy.yml
 	```
 
-+Run on staging
++ Run on staging:
 	```
 	$cd ansible-django-stack
 	ansible-django-stack$ ansible-playbook -i staging deploy.yml
 	```
 
-+ Run on production
++ Run on production:
 	```
 	$cd ansible-django-stack
 	ansible-django-stack$ ansible-playbook -i production deploy_production.yml
