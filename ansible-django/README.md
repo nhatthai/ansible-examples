@@ -67,21 +67,6 @@ Notes:
 		sudo service supervisor restart
 	```
 
-+ If a django isn't running.
-	- Please stop supervisor
-		```
-		sudo supervisorctl stop myapp
-		```
-	- Start Django App
-		```
-		venv/bin/python ./manage.py runserver 0.0.0.0:8000 --settings=myapp.settings
-		```
-	- Start supervisor:
-		```
-		sudo supervisorctl start myapp
-		```
-
-
 Useful Links
 ============
 + [Ansible Django Stack](https://github.com/jcalazan/ansible-django-stack/)
