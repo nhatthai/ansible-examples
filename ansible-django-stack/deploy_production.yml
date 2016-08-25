@@ -1,0 +1,23 @@
+---
+- name: Deploy Django App on production
+  hosts: webservers
+  sudo: yes
+  user: root
+  vars:
+    - update_apt_cache: yes
+
+  vars_files:
+    - vars/base.yml
+
+  roles:
+    - base
+    - dbproduction
+    - web
+
+  environment:
+    DB_NAME: "{{ db_name }}"
+    DB_PASS: "{{ root_db_password }}"
+    DB_USER: "{{ root_db_user }}"
+    DB_HOST: "{{ db_host }}"
+    DB_PORT: "{{ mysql_port }}"
+    DJANGO_SETTINGS_MODULE: "{{ django_settings }}"

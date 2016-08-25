@@ -1,0 +1,25 @@
+---
+# - name: check if app/static directory exists
+#   stat: path={{app_code_dir}}/static
+#   register: static_dir
+
+# - name: create static directory for Django app if it does not exist
+#   command: mkdir {{app_code_dir}}/static
+#   when: static_dir.stat.isdir is not defined
+
+
+- name: django syncdb
+  django_manage:
+    command: syncdb
+    app_path: "{{app_code_dir}}"
+    virtualenv: "{{virtualenv_dir}}"
+    settings: "{{django_settings}}"
+    pythonpath: "{{pythonpath}}"
+
+- name: django migrate
+  django_manage:
+    command: migrate
+    app_path: "{{app_code_dir}}"
+    virtualenv: "{{virtualenv_dir}}"
+    settings: "{{django_settings}}"
+    pythonpath: "{{pythonpath}}"

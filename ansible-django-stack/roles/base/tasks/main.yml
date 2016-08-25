@@ -1,0 +1,10 @@
+---
+- name: Install system packages
+  apt: name={{ item }} update-cache={{ update_apt_cache }} state=installed
+  with_items: "{{ system_packages }}"
+  become: true
+  become_user: root
+
+- name: Install required Python packages.
+  easy_install: name={{ item }}
+  with_items: "{{ python_packages }}"

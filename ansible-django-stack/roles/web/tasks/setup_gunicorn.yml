@@ -1,0 +1,23 @@
+---
+- name: Install gunicorn with virtualenv
+  pip: name=gunicorn virtualenv={{virtualenv_dir}}
+
+- name: Create the Gunicorn script file
+  template: src=files/gunicorn_start.j2
+              dest={{ virtualenv_dir }}/bin/gunicorn_start
+              owner={{ deploy_user }}
+              mode=0755
+              backup=yes
+  tags: deploy
+
+- name: Create the application log folder
+  file: path={{ app_log_dir }}
+          owner={{ deploy_user }}
+          mode=0774
+          state=directory
+
+- name: Create the application log file
+  file: path={{ app_log_file }}
+          owner={{ deploy_user }}
+          mode=0664
+          state=touch

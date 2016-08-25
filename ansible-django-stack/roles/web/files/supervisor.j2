@@ -1,0 +1,6 @@
+[program:{{ project_name }}]
+command = {{ virtualenv_dir }}/bin/gunicorn_start
+user = {{ deploy_user }}
+stdout_logfile = {{ app_log_file }}
+redirect_stderr = true
+environment=LANG=en_US.UTF-8,LC_ALL=en_US.UTF-8

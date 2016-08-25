@@ -1,0 +1,82 @@
+---
+- name: Installs mysql package
+  apt: name={{ item }} state=latest
+  with_items:
+    - mysql-server-5.5
+    - mysql-client-5.5
+
+- name: Copy the templates to their respestive destination
+  template:
+    src: "{{ item.src }}"
+    dest: "{{ item.dest }}"
+    owner: root
+    group: root
+    mode: "{{ item.mode | default(644) }}"
+  with_items:
+    - { src: 'my.cnf.j2', dest: '/etc/mysql/my.cnf' }
+    - { src: 'root.cnf.j2', dest: '~/.my.cnf', mode: '600' }
+
+- name: Ensure Anonymous user(s) are not in the database
+  mysql_user:
+    name: ''
+    host: "{{ item }}"
+    state: absent
+    login_password: ""
+    login_user: root
+  with_items:
+    - 127.0.0.1
+    - localhost
+  register: result
+  ignore_errors: True
+
+- name: Update MySQL root password for all root accounts
+  mysql_user:
+    name: root
+    host: "{{ item }}"
+    password: "{{ root_db_password }}"
+    state: present
+    login_password: ""
+    login_user: root
+  with_items:
+    - 127.0.0.1
+    - ::1
+    - localhost
+  when: result | success
+
+- name: Ensure Anonymous user(s) are not in the database when has login pass
+  mysql_user:
+    name: ''
+    host: "{{ item }}"
+    state: absent
+    login_password: "{{ root_db_password }}"
+    login_user: root
+  with_items:
+    - 127.0.0.1
+    - localhost
+  register: result
+  ignore_errors: True
+  when: result | failed
+
+- name: Update MySQL root password for all root accounts when has login pass
+  mysql_user:
+    name: root
+    host: "{{ item }}"
+    password: "{{ root_db_password }}"
+    state: present
+    login_password: "{{ root_db_password }}"
+    login_user: root
+  with_items:
+    - 127.0.0.1
+    - ::1
+    - localhost
+  when: result | failed
+
+- name: Create Database
+  mysql_db:
+    name: "{{ db_name }}"
+    login_password: "{{ root_db_password }}"
+    login_user: "{{ root_db_user }}"
+    state: present
+
+- name: Create Application DB User
+  mysql_user: name={{ root_db_user }} password={{ root_db_password }} login_password="{{ root_db_password }}" login_user={{ root_db_user }} priv=*.*:ALL host='%' state=present

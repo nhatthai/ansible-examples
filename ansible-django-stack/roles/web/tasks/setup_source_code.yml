@@ -1,0 +1,15 @@
+---
+  - name: Ensure bitbucket.org is a known host
+    lineinfile:
+      dest: "{{install_root}}/.ssh/known_hosts"
+      create: yes
+      state: present
+      line: "{{ lookup('pipe', 'ssh-keyscan -t rsa bitbucket.org') }}"
+      regexp: "^bitbucket\\.org"
+    become: true
+    become_user: ubuntu
+
+  - name: Pull the code from the repository
+    git: repo={{ project_repo }} dest={{ install_root }}/{{ project_name }}/ version=master accept_hostkey=yes
+    become: true
+    become_user: ubuntu

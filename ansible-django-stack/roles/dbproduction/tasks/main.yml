@@ -1,0 +1,5 @@
+---
+- name: Installs mysql package
+  apt: name={{ item }} state=latest
+  with_items:
+    - mysql-client-5.5

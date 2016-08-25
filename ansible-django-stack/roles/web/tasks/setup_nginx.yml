@@ -1,0 +1,11 @@
+---
+- name: Remove default nginx site
+  file: path=/etc/nginx/sites-enabled/default state=absent
+
+- name: Copy nginx config
+  template: src=files/nginx.j2 dest=/etc/nginx/sites-enabled/{{ project_name }}.conf
+  notify:
+  - restart nginx
+
+- name: Make sure nginx server is running
+  service: name=nginx state=started enabled=yes

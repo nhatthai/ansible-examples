@@ -1,0 +1,14 @@
+# apt packages, you should not need to change this unless you have packages
+# listed in your requirements that depend on system packages.
+system_packages:
+  - git
+  - nginx
+  - python-pip
+  - build-essential
+  - python-dev
+  - libmysqlclient-dev
+  - python-mysqldb
+  - supervisor
+
+python_packages:
+  - virtualenv
