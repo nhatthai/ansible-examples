@@ -20,7 +20,7 @@ Requirements:
 
 Vagrant
 ========
-+Ubuntu: My SQL Server & Web App
++ Ubuntu: My SQL Server & Web App
 
 
 Staging
@@ -38,6 +38,23 @@ Run the playbook:
 =================
 Please make sure that you added id_rsa.pub into your machine as well as the repository(github or bitbucket)
 
++ Check list task
+	```
+	$cd ansible-django-stack
+	ansible-django-stack$ansible-playbook --list-tasks -i vagrant deploy.yml
+	```
+
++ Run with tag: You can decide which tags to run or skip using the flags --tags <tagname> and --skip-tags <tagnames>
+
+	```
+	# will run only tasks with the tag 'deploy'
+	$ ansible-playbook --tags=deploy -i vagrant deploy.yml
+	```
+
+	```
+	# will run all tasks except the ones that contain the tag 'deploy'
+	$ ansible-playbook --skip-tags=deploy -i vagrant deploy.yml
+	```
 
 + Run on vagrant:
 	```
