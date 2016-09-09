@@ -35,7 +35,8 @@ Production
 + EC2: Web App
 
 
-### Folder structures
+Folder structures
+=================
 ```
 ├── ansible-django-stack
 │   ├── production
