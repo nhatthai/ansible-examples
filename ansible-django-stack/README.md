@@ -39,35 +39,34 @@ Production
 ```
 ├── ansible-django-stack
 │   ├── production
-│  	├── roles
-│	│	├──base
-│	│	├──db
-│	│	├──web
-│  	│
-│	├── staging
-│	├── vagrant
-│	├── vars
-│  	│	└──base.yml
-│	├── deploy.yml
-│	└── deploy_production.yml
+│   ├── roles
+│   │    ├──base
+│   │    ├──db
+│   │    ├──web
+│   │
+│   ├── staging
+│   ├── vagrant
+│   ├── vars
+│   │    └──base.yml
+│   ├── deploy.yml
+│   └── deploy_production.yml
 │
 ├── sources
 │   └── myapp
-│		├── myapp
-│		│	├── apps
-│		│	├── __init__.py
-│		│	├── settings.py
-│		│	├── urls.py
-│		│	└── wsgi.py
-│  		│
-│		│
-│   	├── requirements
-│		│	├── base.txt
-│		│	└── development.txt
-│ 		│
-│   	├── static
-│		│	└──main.css
-│ 		└── manage.py
+│       ├── myapp
+│       │   ├── apps
+│       │   ├── __init__.py
+│       │	├── settings.py
+│       │	├── urls.py
+│       │	└── wsgi.py
+│       │
+│       ├── requirements
+│       │    ├── base.txt
+│       │    └── development.txt
+│       │
+│       ├── static
+│       │	└──main.css
+│       └── manage.py
 │  
 └── vagrant
 	└── Vagrantfile
