@@ -6,6 +6,3 @@
 - name: Create virtualenv with mysql-python installed in it
   pip: name=mysql-python virtualenv={{virtualenv_dir}}
 
-- name: Install python packages with virtualenv
-  pip: requirements={{ app_code_dir }}/requirements/development.txt virtualenv={{ virtualenv_dir }}
-  when: venv_dir.stat.isdir is not defined

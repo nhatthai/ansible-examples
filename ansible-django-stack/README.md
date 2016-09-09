@@ -8,6 +8,7 @@ Ansible Playbook designed for environments running a Django app. It can install 
 + Virtualenv
 + MySQL
 + Django
++ Redis
 
 Tested with EC2: Ubuntu 14.04 LTS x64
 
@@ -34,6 +35,45 @@ Production
 + EC2: Web App
 
 
+### Folder structures
+```
+├── ansible-django-stack
+│   ├── production
+│  	├── roles
+│	│	├──base
+│	│	├──db
+│	│	├──web
+│  	│
+│	├── staging
+│	├── vagrant
+│	├── vars
+│  	│	└──base.yml
+│	├── deploy.yml
+│	└── deploy_production.yml
+│
+├── sources
+│   └── myapp
+│		├── myapp
+│		│	├── apps
+│		│	├── __init__.py
+│		│	├── settings.py
+│		│	├── urls.py
+│		│	└── wsgi.py
+│  		│
+│		│
+│   	├── requirements
+│		│	├── base.txt
+│		│	└── development.txt
+│ 		│
+│   	├── static
+│		│	└──main.css
+│ 		└── manage.py
+│  
+└── vagrant
+	└── Vagrantfile
+
+```
+
 Run the playbook:
 =================
 Please make sure that you added id_rsa.pub into your machine as well as the repository(github or bitbucket)
@@ -44,16 +84,16 @@ Please make sure that you added id_rsa.pub into your machine as well as the repo
 	ansible-django-stack$ansible-playbook --list-tasks -i vagrant deploy.yml
 	```
 
-+ Run with tag: You can decide which tags to run or skip using the flags --tags <tagname> and --skip-tags <tagnames>
++ Run with tag: You can decide which tags to run or skip using the flags --tags <tagname> and and --skip-tags <tagnames>
 
 	```
 	# will run only tasks with the tag 'deploy'
-	$ ansible-playbook --tags=deploy -i vagrant deploy.yml
+	$ ansible-playbook --tags=deploy playbook.yml
 	```
 
 	```
 	# will run all tasks except the ones that contain the tag 'deploy'
-	$ ansible-playbook --skip-tags=deploy -i vagrant deploy.yml
+	$ ansible-playbook --skip-tags=deploy playbook.yml
 	```
 
 + Run on vagrant:
