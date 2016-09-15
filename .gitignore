@@ -1,3 +1,6 @@
 *.pyc
-sources/logs
-sources/venv
+
+sources/*/logs
+sources/*/venv
+vagrant/*
+vagrant/.vagrant
