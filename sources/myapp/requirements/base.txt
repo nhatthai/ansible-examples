@@ -1,4 +1,9 @@
-Django==1.8.1
-gunicorn==19.3.0
+# Base
+Django==1.8.4
 MySQL-python
-redis==2.10.3
+django-compressor>=1.4
+Pillow==2.9.0
+uwsgi==2.0.11.1
+django-extensions==1.5.9
+factory_boy==2.6.0
+requests

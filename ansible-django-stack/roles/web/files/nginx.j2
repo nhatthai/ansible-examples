@@ -20,13 +20,13 @@ server {
         alias   {{static_root}}/;
     }
 
-    location /favicon.ico {
-        alias {{static_root}}/favicon.ico;
-    }
+    #location /favicon.ico {
+    #    alias {{static_root}}/favicon.ico;
+    #}
 
-    location /media/ {
-        alias   {{app_code_dir}}/media/;
-    }
+    #location /media/ {
+    #    alias   {{app_code_dir}}/media/;
+    #}
 
     location / {
         # an HTTP header important enough to have its own Wikipedia entry:
@@ -61,15 +61,15 @@ server {
     }
 
     # Error pages
-    error_page  404              /404.html;
-    location = /404.html {
-        root   {{static_root}};
-    }
+    #error_page  404              /404.html;
+    #location = /404.html {
+    #    root   {{static_root}};
+    #}
 
 
     # Error pages
-    error_page 500 502 503 504 /500.html;
-    location = /500.html {
-        root {{static_root}};
-    }
+    #error_page 500 502 503 504 /500.html;
+    #location = /500.html {
+    #    root {{static_root}};
+    #}
 }

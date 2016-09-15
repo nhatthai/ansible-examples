@@ -3,9 +3,12 @@
   template: src=files/supervisor.j2
             dest=/etc/supervisor/conf.d/{{ project_name }}.conf
             backup=yes
+  tags: ["restart", "deploy"]
 
 - name: Re-read the Supervisor config files
   supervisorctl: name={{ project_name }} state=present
+  tags: ["restart", "deploy"]
 
 - name: Restart Supervisor
   supervisorctl: name={{ project_name }} state=restarted
+  tags: ["restart", "deploy"]

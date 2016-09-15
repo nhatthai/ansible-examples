@@ -8,7 +8,6 @@
               owner={{ deploy_user }}
               mode=0755
               backup=yes
-  tags: deploy
 
 - name: Create the application log folder
   file: path={{ app_log_dir }}

@@ -1,5 +1,6 @@
 ---
-#- include: setup_source_code.yml
+- include: setup_source_code.yml
+  when: "{{git_repo}}"
 
 - include: setup_virtualenv.yml
 

@@ -9,6 +9,7 @@
     virtualenv: "{{virtualenv_dir}}"
     settings: "{{django_settings}}"
     pythonpath: "{{pythonpath}}"
+  tags: deploy
 
 - name: django migrate
   django_manage:
@@ -17,3 +18,4 @@
     virtualenv: "{{virtualenv_dir}}"
     settings: "{{django_settings}}"
     pythonpath: "{{pythonpath}}"
+  tags: deploy

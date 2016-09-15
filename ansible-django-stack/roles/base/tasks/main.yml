@@ -1,4 +1,16 @@
 ---
+  # Copies the key from the user who is running ansible to the remote machine user ubuntu
+# - authorized_key: user=vagrant key={{ lookup('file', '/Users/nhatthai/.ssh/id_rsa.pub') }}
+#   become: yes
+
+# - name: Update APT packages cache
+#   apt: update_cache={{ update_apt_cache }} cache_valid_time=86400
+
+# - name: Update OS
+#   apt: upgrade=yes
+#   become: true
+#   become_user: root
+
 - name: Install system packages
   apt: name={{ item }} update-cache={{ update_apt_cache }} state=installed
   with_items: "{{ system_packages }}"

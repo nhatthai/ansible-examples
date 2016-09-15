@@ -36,6 +36,7 @@
 
   # the git repository URL for the project
   #project_repo: git@bitbucket.org:nhatthai_asnet/django-app.git
+  git_repo: false
 
   # a private key that has access to the repository URL
   #ssh_private_key: ~/.ssh/id_rsa

@@ -1,0 +1,20 @@
+#!/bin/sh
+
+DB_NAME="etherapist_ddsdssddsfsd"
+DB_USER="root"
+DB_PASS="root"
+DB_HOST="127.0.0.1"
+DB_PORT="3306"
+DJANGODIR="/home/vagrant/myapp/src/backend"
+
+# Activate the virtual environment.
+#cd $DJANGODIR
+. /home/vagrant/myapp/venv/bin/activate
+export DB_NAME=$DB_NAME
+export DB_USER=$DB_USER
+export DB_PASS=$DB_PASS
+export DB_HOST=$DB_HOST
+export DB_PORT=$DB_PORT
+
+echo "Show database: $DB_NAME"
+echo "Show database: $DB_USER"
